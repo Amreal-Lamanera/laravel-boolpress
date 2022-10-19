@@ -43,4 +43,6 @@ Route::middleware('auth')
 
         // tutte le rotte della crud controller avranno i prefissi detti precedentemente
         Route::resource('posts', 'PostController');
+
+        Route::post('/posts/index/ordered', 'PostController@ordered')->name('posts.ordered');
     });

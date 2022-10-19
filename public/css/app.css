@@ -21,6 +21,20 @@
   background-color: #000 !important;
 }
 
+.fw_bold {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.fw_bold:hover {
+  color: #6cb2eb !important;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor !important;
+}
+
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

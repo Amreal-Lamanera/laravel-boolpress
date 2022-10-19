@@ -19,6 +19,12 @@ class PostController extends Controller
         return view('admin.posts.index', compact('posts'));
     }
 
+    public function ordered()
+    {
+        $posts = Post::orderby('created_at', 'desc')->get();
+        return view('admin.posts.index', compact('posts'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -26,7 +32,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -37,7 +43,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $params = $request->validate([
+            'title' => 'required|max:255|distinct',
+            'content' => 'required'
+        ]);
+        $params['slug'] = str_replace(' ', '-', $params['title']);
+
+        $post = Post::create($params);
+
+        return view('admin.posts.show', compact('post'));
     }
 
     /**
@@ -71,7 +86,16 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        dd($request->all());
+        $params = $request->validate([
+            'title' => 'required|max:255|distinct',
+            'content' => 'required'
+        ]);
+        $params['slug'] = $post->slug;
+
+        $post->update($params);
+
+        return view('admin.posts.show', compact('post'));
     }
 
     /**

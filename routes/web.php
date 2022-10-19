@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// funziona anche se dà errore
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

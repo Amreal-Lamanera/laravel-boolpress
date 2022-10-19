@@ -1,5 +1,26 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #FFF;
+  background-color: #343a40;
+  color: #cecece;
+}
+
+.my_shadow-sm {
+  box-shadow: 0 0 0.25rem rgb(255, 255, 255);
+}
+
+.bg-black {
+  background-color: #000 !important;
+}
+
+.navbar.bg-black * {
+  background-color: #000 !important;
+}
+
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

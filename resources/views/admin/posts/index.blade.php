@@ -49,12 +49,12 @@
                 </td>
                 <td>
                     <!-- Button trigger modal -->
-                    <button type="button" data-toggle="modal" data-target="#popup" class="btn btn-danger btn-sm">
+                    <button type="button" data-toggle="modal" data-target="{{ '#popup'.$key }}" class="btn btn-danger btn-sm">
                         Elimina
                     </button>
                     
                     <!-- Modal -->
-                    <div class="modal fade" id="popup" tabindex="-1" aria-labelledby="popupLabel" aria-hidden="true">
+                    <div class="modal fade" id="{{ 'popup'.$key }}" tabindex="-1" aria-labelledby="popupLabel" aria-hidden="true">
                         <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">

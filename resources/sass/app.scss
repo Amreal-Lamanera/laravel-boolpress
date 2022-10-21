@@ -7,3 +7,14 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+.order-icon {
+    width: 1rem;
+    height: 1rem;
+
+    &.order-desc {
+        transform: rotate(180deg);
+        transform-origin: center;
+    }
+}

@@ -18,17 +18,140 @@
         <thead>
             <tr>
                 <th scope="col">
-                        <a href="{{ route('admin.posts.index') }}" class="fw_bold">
-                            #
-                        </a>
+                    <a 
+                        href="{{ 
+                        route('admin.posts.index', 
+                        [
+                            'orderBy' => 'id', 
+                            'dir' => Request::get('dir') === 'asc' ? 'desc' : 'asc'
+                        ])
+                        }}"
+                        class="d-flex align-items-center"
+                    >
+                        #
+                        <div 
+                            class="
+                            @if(Request::get('orderBy') === 'id') d-block
+                            @else d-none
+                            @endif
+                        ">
+                            <svg
+                                class="
+                                @if(Request::get('dir') === 'desc') order-desc 
+                                @else order-asc
+                                @endif ml-3 w-6 h-6 order-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                        </div>
+                    </a>
                 </th>
-                <th scope="col">Title</th>
-                <th scope="col">Slug</th>
                 <th scope="col">
-                    <form action="{{ route('admin.posts.ordered') }}" method="POST">
-                        @csrf
-                        <input type="submit" value="Created at" class="border-0 fw_bold">
-                    </form>
+                    <a 
+                        href="{{ 
+                        route('admin.posts.index', 
+                        [
+                            'orderBy' => 'title', 
+                            'dir' => Request::get('dir') === 'asc' ? 'desc' : 'asc'
+                        ])
+                        }}"
+                        class="d-flex align-items-center"
+                    >
+                        Title
+                        <div 
+                            class="
+                            @if(Request::get('orderBy') === 'title') d-block
+                            @else d-none
+                            @endif
+                        ">
+                            <svg
+                                class="
+                                @if(Request::get('dir') === 'desc') order-desc 
+                                @else order-asc
+                                @endif ml-3 w-6 h-6 order-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                        </div>
+                    </a>
+                </th>
+                <th scope="col">
+                    <a 
+                        href="{{ 
+                        route('admin.posts.index', 
+                        [
+                            'orderBy' => 'slug', 
+                            'dir' => Request::get('dir') === 'asc' ? 'desc' : 'asc'
+                        ])
+                        }}"
+                        class="d-flex align-items-center"
+                    >
+                        Slug
+                        <div 
+                            class="
+                            @if(Request::get('orderBy') === 'slug') d-block
+                            @else d-none
+                            @endif
+                        ">
+                            <svg
+                                class="
+                                @if(Request::get('dir') === 'desc') order-desc 
+                                @else order-asc
+                                @endif ml-3 w-6 h-6 order-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                        </div>
+                    </a>
+                </th>
+                <th scope="col">
+                    <a 
+                        href="{{ 
+                        route('admin.posts.index', 
+                        [
+                            'orderBy' => 'created_at', 
+                            'dir' => Request::get('dir') === 'asc' ? 'desc' : 'asc'
+                        ])
+                        }}"
+                        class="d-flex align-items-center"
+                    >
+                        Created_at
+                        <div 
+                            class="
+                            @if(Request::get('orderBy') === 'created_at') d-block
+                            @else d-none
+                            @endif
+                        ">
+                            <svg
+                                class="
+                                @if(Request::get('dir') === 'desc') order-desc 
+                                @else order-asc
+                                @endif ml-3 w-6 h-6 order-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                        </div>
+                    </a>
                 </th>
                 <th scope="col">Show</th>
                 <th scope="col">Delete</th>
@@ -68,10 +191,14 @@
                             </div>
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Annulla</button>
-                            <form action="{{ route('admin.posts.destroy', $post) }}" method="POST">
+                            <form action="{{ 
+                                route('admin.posts.destroy', $post)
+                            }}" method="POST">
                                 @csrf
                                 @method('DELETE')
         
+                                <input type="hidden" name="orderBy" value="{{ Request::get('orderBy') }}">
+                                <input type="hidden" name="dir" value="{{ Request::get('dir') }}">
                                 <input type="submit" class="btn btn-danger btn-sm" value="Elimina">
                             </form>
                             </div>

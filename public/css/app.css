@@ -10967,3 +10967,13 @@ a.text-dark:focus {
   }
 }
 
+.order-icon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.order-icon.order-desc {
+  transform: rotate(180deg);
+  transform-origin: center;
+}
+

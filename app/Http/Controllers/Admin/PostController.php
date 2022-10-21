@@ -13,15 +13,13 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::all();
-        return view('admin.posts.index', compact('posts'));
-    }
-
-    public function ordered()
-    {
-        $posts = Post::orderby('created_at', 'desc')->get();
+        $params = $request->all();
+        if (isset($params['orderBy']))
+            $posts = Post::orderBy($params['orderBy'], $params['dir'])->get();
+        else
+            $posts = Post::all();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -104,9 +102,10 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post, Request $request)
     {
+        $request = ['orderBy' => $request['orderBy'], 'dir' => $request['dir']];
         $post->delete();
-        return redirect()->route('admin.posts.index');
+        return redirect()->route('admin.posts.index', $request);
     }
 }

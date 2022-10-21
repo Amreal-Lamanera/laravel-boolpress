@@ -124,6 +124,40 @@
                         href="{{ 
                         route('admin.posts.index', 
                         [
+                            'orderBy' => 'category_id', 
+                            'dir' => Request::get('dir') === 'asc' ? 'desc' : 'asc'
+                        ])
+                        }}"
+                        class="d-flex align-items-center"
+                    >
+                        Categoria
+                        <div 
+                            class="
+                            @if(Request::get('orderBy') === 'category_id') d-block
+                            @else d-none
+                            @endif
+                        ">
+                            <svg
+                                class="
+                                @if(Request::get('dir') === 'desc') order-desc 
+                                @else order-asc
+                                @endif ml-3 w-6 h-6 order-icon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                            >
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                            </svg>
+                        </div>
+                    </a>
+                </th>
+                <th scope="col">
+                    <a 
+                        href="{{ 
+                        route('admin.posts.index', 
+                        [
                             'orderBy' => 'created_at', 
                             'dir' => Request::get('dir') === 'asc' ? 'desc' : 'asc'
                         ])
@@ -164,6 +198,7 @@
                 <th scope="row">{{ $post->id }}</th>
                 <td>{{ $post->title }}</td>
                 <td>{{ $post->slug }}</td>
+                <td>{{ $post->category ? $post->category->name : '-' }}</td>
                 <td>{{ $post->created_at }}</td>
                 <td>
                     <a href="{{ route('admin.posts.show', $post) }}" type="button" class="btn btn-primary btn-sm">

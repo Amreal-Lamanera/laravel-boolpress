@@ -46,7 +46,7 @@ class PostController extends Controller
             'title' => 'required|max:255|distinct',
             'content' => 'required'
         ]);
-        $params['slug'] = str_replace(' ', '-', $params['title']);
+        $params['slug'] = Post::getUniqueSlugFromTitle($params['title']);
 
         $post = Post::create($params);
 
@@ -89,7 +89,11 @@ class PostController extends Controller
             'title' => 'required|max:255|distinct',
             'content' => 'required'
         ]);
-        $params['slug'] = $post->slug;
+        if ($params['title'] === $post->title) {
+            $params['slug'] = $post->slug;
+        } else {
+            $params['slug'] = Post::getUniqueSlugFromTitle($params['title']);
+        }
 
         $post->update($params);
 

@@ -8,6 +8,9 @@
                 <h1>
                     {{ $post->title }}
                 </h1>
+                <h4>
+                    Categoria: {{ $post->category ? $post->category->name : '-' }}
+                </h4>
             </div>
             <div class="col-4 text-left d-flex justify-content-end align-items-center">
                 <a href="{{ route('admin.posts.edit', $post) }}" type="button" class="btn btn-primary btn-sm mr-3">Modifica</a>

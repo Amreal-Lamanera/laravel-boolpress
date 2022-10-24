@@ -153,6 +153,9 @@
                         </div>
                     </a>
                 </th>
+                <th>
+                    Tags
+                </th>
                 <th scope="col">
                     <a 
                         href="{{ 
@@ -199,6 +202,19 @@
                 <td>{{ $post->title }}</td>
                 <td>{{ $post->slug }}</td>
                 <td>{{ $post->category ? $post->category->name : '-' }}</td>
+                <td>
+                    <ul>
+                        @forelse ($post->tags as $tag)
+                            <li>
+                                <a href="{{ route('admin.tags.show', $tag->id) }}">
+                                    {{ $tag->name }}
+                                </a>
+                            </li>
+                        @empty
+                            -
+                        @endforelse
+                    </ul>
+                </td>
                 <td>{{ $post->created_at }}</td>
                 <td>
                     <a href="{{ route('admin.posts.show', $post) }}" type="button" class="btn btn-primary btn-sm">

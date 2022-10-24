@@ -33,6 +33,14 @@
                 @enderror
               </div>
 
+              @foreach($tags as $tag)
+                <div class="form-check form-check-inline">
+                    {{-- all'attribito name aggiungo le parentesi quadre così da associare a tags un array contenente ogni checkbox selezionata --}}
+                    <input class="form-check-input" name="tags[]" @if(in_array($tag->id, old('tags', $post->tags->pluck('id')->all()))) checked @endif type="checkbox" id="tag-{{ $tag->id }}" value="{{ $tag->id }}">
+                    <label class="form-check-label" for="tag-{{ $tag->id }}">{{ $tag->name }}</label>
+                </div>
+              @endforeach
+
             <div class="form-group">
                 <label for="content">Testo</label>
                 <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content" rows="20" placeholder="Inserisci il contenuto dell'articolo..">{!! old('content', $post->content) !!}</textarea>

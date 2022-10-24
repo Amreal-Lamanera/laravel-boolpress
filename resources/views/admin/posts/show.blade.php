@@ -8,11 +8,31 @@
                 <h1>
                     {{ $post->title }}
                 </h1>
-                <h4>
-                    Categoria: {{ $post->category ? $post->category->name : '-' }}
-                </h4>
+
+                <div class="mb-5">
+                    <h4 class="d-inline">
+                        Categoria:
+                    </h4>
+                    <div class="d-inline">
+                        {{ $post->category ? $post->category->name : '-' }}
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center pb-3">
+                    <h4 class="mr-3 mb-0">
+                        Tags:
+                    </h4>
+                    @forelse ($post->tags as $tag)
+                        <a href="{{ route('admin.tags.show', $tag->id) }}" class="badge badge-light text-dark mr-1 p-2">
+                            {{ $tag->name }}
+                        </a>
+                    @empty
+                        <span>Nessun tag</span>
+                    @endforelse
+                </div>
             </div>
-            <div class="col-4 text-left d-flex justify-content-end align-items-center">
+            
+            <div class="col-4 text-left d-flex justify-content-end align-items-start">
                 <a href="{{ route('admin.posts.edit', $post) }}" type="button" class="btn btn-primary btn-sm mr-3">Modifica</a>
                 <!-- Button trigger modal -->
                 <button type="button" data-toggle="modal" data-target="#popup" class="btn btn-danger btn-sm">
@@ -48,9 +68,12 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container pt-3 border-top border-1">
         <div class="row">
             <div class="col-12">
+                <h2 class="mb-4">
+                    Contenuto:
+                </h2>
                 <p>
                     {!! $post->content !!}
                 </p>

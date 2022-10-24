@@ -5,9 +5,12 @@
     <div class="container">
         <div class="row">
             <div class="col-12 d-flex
-            align-items-center">
-                <a href="{{ route('admin.tags.show', $tag->id) }}" class="badge badge-light text-dark p-3 fs-1 mb-5 fs-4">
+            align-items-center justify-content-between align-items-center mb-5">
+                <a href="{{ route('admin.tags.show', $tag->id) }}" class="badge badge-light text-dark p-3 fs-1 fs-4">
                     {{ $tag->name }}
+                </a>
+                <a href="{{ route('admin.tags.edit', $tag) }}" type="button" class="btn btn-primary btn-sm">
+                    Modifica Tag
                 </a>
             </div>
         </div>

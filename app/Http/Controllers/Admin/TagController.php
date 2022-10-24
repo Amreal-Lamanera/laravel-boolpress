@@ -67,7 +67,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -79,7 +79,17 @@ class TagController extends Controller
      */
     public function update(Request $request, Tag $tag)
     {
-        //
+        $params = $request->validate([
+            'name' => 'required|max:15',
+        ]);
+
+        if ($params['name'] !== $tag->name) {
+            $params['slug'] = Tag::getUniqueSlugFromTitle($params['name']);
+        }
+
+        $tag->update($params);
+
+        return redirect()->route('admin.tags.show', $tag);
     }
 
     /**

@@ -105,9 +105,7 @@ class PostController extends Controller
             'category_id' => 'nullable|exists:categories,id',
             'tags' => 'exists:tags,id'
         ]);
-        if ($params['title'] === $post->title) {
-            $params['slug'] = $post->slug;
-        } else {
+        if ($params['title'] !== $post->title) {
             $params['slug'] = Post::getUniqueSlugFromTitle($params['title']);
         }
 

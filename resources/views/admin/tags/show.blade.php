@@ -63,7 +63,7 @@
                       <h6 class="card-subtitle mb-2 text-muted">{{ $post->category->name }}</h6>
                       @endif
                       <p class="card-text">{{ $post->slug }}</p>
-                      <a href="{{ route('admin.posts.show', $post) }}" class="card-link">Link all'articolo completo</a>
+                      <a href="{{ route('admin.posts.show', $post) }}" class="card-link mt-auto">Link all'articolo completo</a>
                     </div>
                   </div>
             </div>

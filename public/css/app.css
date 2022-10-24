@@ -39,6 +39,24 @@ a {
   font-size: 1rem;
 }
 
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body h5 {
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+.card-body a.card-link {
+  color: #3490dc !important;
+}
+
+.card-body a.card-link.card-link:hover {
+  text-decoration: underline;
+}
+
 /*!
  * Bootstrap v4.6.2 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors

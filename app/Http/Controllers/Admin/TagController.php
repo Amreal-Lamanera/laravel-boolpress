@@ -26,7 +26,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tags.create');
     }
 
     /**
@@ -37,7 +37,15 @@ class TagController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $params = $request->validate([
+            'name' => 'required|max:15',
+        ]);
+
+        $params['slug'] = Tag::getUniqueSlugFromTitle($params['name']);
+
+        $tag = Tag::create($params);
+
+        return redirect()->route('admin.tags.show', $tag);
     }
 
     /**

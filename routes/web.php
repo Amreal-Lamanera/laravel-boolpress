@@ -29,5 +29,5 @@ Route::middleware('auth')
 
         Route::resource('posts', 'PostController');
 
-        Route::resource('tags', 'tagController')->only(['index', 'show']);
+        Route::resource('tags', 'tagController');
     });

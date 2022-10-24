@@ -75,6 +75,7 @@
                     @auth
                         <a href="{{ url('/admin/home') }}">Home</a>
                         <a href="{{ route('admin.posts.index') }}">Articoli</a>
+                        <a href="{{ route('admin.tags.index') }}">Tags</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 

@@ -3,8 +3,38 @@
 @section('content')
 
 <div class="container">
-    <form action=" {{ route('admin.posts.store') }}" method="POST">
+    <form action=" {{ route('admin.posts.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+
+          {{-- <label class="font-weight-bold">Scegli immagine</label>
+
+          <div class="input-group mb-3 @error('image') is-invalid @enderror">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" name="image" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+              <label class="custom-file-label" for="inputGroupFile01">Scegli file...</label>
+            </div>
+          </div>
+         
+          @error('image')
+          <div id="image" class="invalid-feedback">
+              {{ $message }}
+          </div>
+          @enderror --}}
+
+          <div class="form-group">
+            <label for="image" class="font-weight-bold">Scegli immagine</label>
+            <input type="file" class="form-control-file @error('image') is-invalid @enderror" id="image"
+                name="image">
+           
+                @error('image')
+                <div id="image" class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+          </div>
         
         <div class="form-group">
           <label for="title">Titolo</label>

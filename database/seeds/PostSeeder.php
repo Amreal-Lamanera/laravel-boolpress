@@ -19,7 +19,7 @@ class PostSeeder extends Seeder
         $categoryIds = Category::all()->pluck('id');
         $tags = [];
 
-        for ($i = 0; $i < 50; $i++) {
+        for ($i = 0; $i < 300; $i++) {
             $post = new Post();
             $post->title = $faker->words(rand(5, 10), true);
             $post->content = $faker->paragraphs(rand(10, 20), true);
@@ -51,7 +51,7 @@ class PostSeeder extends Seeder
             }
 
             $tagIds = array_splice($tags, rand(0, count($tags) - 1), rand(0, count($tags) - 1));
-            // $tagIds = $tags->shuffle()->take(3)->all();
+            // $tagIds = $tags->shuffle()->take(rand(0, count($tags) - 1))->all();
 
             $post->tags()->sync($tagIds);
         }

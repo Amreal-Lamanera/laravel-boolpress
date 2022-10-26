@@ -5,6 +5,11 @@
     <div class="container">
         <div class="row">
             <div class="col-8">
+                
+                @if(isset($post->cover))
+                <img src=" {{ $post->cover_path }} " width="400" alt="">
+                @endif
+
                 <h1>
                     {{ $post->title }}
                 </h1>

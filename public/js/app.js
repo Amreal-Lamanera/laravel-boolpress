@@ -49577,8 +49577,13 @@ var app = new Vue({
   el: '#app',
   data: function data() {
     return {
-      popup: false
+      imgSet: false
     };
+  },
+  methods: function methods() {
+    function preview() {
+      this.imgSet = true;
+    }
   }
 });
 

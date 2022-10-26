@@ -31,7 +31,12 @@ const app = new Vue({
     el: '#app',
     data() {
         return {
-            popup: false,
+            imgSet: false,
         }
     },
+    methods() {
+        function preview() {
+            this.imgSet = true;
+        }
+    }
 });

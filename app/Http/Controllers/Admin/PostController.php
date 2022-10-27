@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Mail\NewPostNotificationMail;
+use App\Mail\PostDeletedNotificationMail;
+use App\Mail\PostUpdatedNotificationMail;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
@@ -146,6 +148,8 @@ class PostController extends Controller
             $post->tags()->detach();
         }
 
+        Mail::to('account@mail.com')->send(new PostUpdatedNotificationMail($post));
+
         return view('admin.posts.show', compact('post'));
     }
 
@@ -169,6 +173,8 @@ class PostController extends Controller
             // dd('sono qui');
             Storage::disk('images')->delete($cover);
         }
+
+        Mail::to('account@mail.com')->send(new PostDeletedNotificationMail($post));
 
         return redirect()->route('admin.posts.index', $request);
     }

@@ -2108,7 +2108,7 @@ var render = function render() {
   }, _vm._l(_vm.post.tags, function (tag) {
     return _c("li", {
       key: tag.id,
-      staticClass: "rounded-full hover:bg-amber-400 bg-gray-600 px-2 py-1 text-xs cursor-pointer"
+      staticClass: "text-black rounded-full hover:bg-cyan-400 bg-gray-600 px-2 py-1 text-xs cursor-pointer"
     }, [_vm._v("\n                " + _vm._s(tag.name) + "\n            ")]);
   }), 0)])]);
 };

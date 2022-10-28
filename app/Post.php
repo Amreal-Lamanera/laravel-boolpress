@@ -43,6 +43,8 @@ class Post extends Model
 
     public function getCoverPathAttribute()
     {
+        if (filter_var($this->cover, FILTER_VALIDATE_URL))
+            return $this->cover;
         return $this->cover ? asset('images/' . $this->cover) : null;
     }
 

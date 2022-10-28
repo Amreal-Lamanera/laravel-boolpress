@@ -12,7 +12,7 @@
                 {{ post.category.name }}
             </p>
             <ul class="flex gap-4 py-3">
-                <li class="rounded-full hover:bg-amber-400 bg-gray-600 px-2 py-1 text-xs cursor-pointer" v-for="tag in post.tags" :key="tag.id">
+                <li class="text-black rounded-full hover:bg-cyan-400 bg-gray-600 px-2 py-1 text-xs cursor-pointer" v-for="tag in post.tags" :key="tag.id">
                     {{ tag.name }}
                 </li>
             </ul>

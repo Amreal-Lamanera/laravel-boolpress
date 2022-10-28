@@ -43,6 +43,13 @@ class Post extends Model
 
     public function getCoverPathAttribute()
     {
-        return asset('images/' . $this->cover);
+        return $this->cover ? asset('images/' . $this->cover) : null;
     }
+
+    public function getDateAttribute()
+    {
+        return $this->created_at->format('d/m/Y');
+    }
+
+    protected $appends = ['cover_path', 'date'];
 }

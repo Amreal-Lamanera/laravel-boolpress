@@ -7,8 +7,9 @@
             <div class="col-8">
                 
                 @if(isset($post->cover))
-                <img src=" {{ $post->cover_path }} " width="400" alt="">
+                <img src="{{ $post->cover_path }}" width="400" alt="">
                 @endif
+                {{-- @dump($post->cover_path) --}}
 
                 <h1>
                     {{ $post->title }}

@@ -43,7 +43,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-h1 {
-    text-align: center;
+a:hover {
+    text-decoration: none;
+    border: 1px solid #fff;
 }
 </style>

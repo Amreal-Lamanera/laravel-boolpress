@@ -2477,7 +2477,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "h1[data-v-55f45c7e] {\n  text-align: center;\n}", ""]);
+exports.push([module.i, "a[data-v-55f45c7e]:hover {\n  text-decoration: none;\n  border: 1px solid #fff;\n}", ""]);
 
 // exports
 

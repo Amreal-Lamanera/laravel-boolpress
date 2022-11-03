@@ -50,4 +50,8 @@ export default {
 
 <style>
 
+    header {
+        height: 5vh;
+    }
+
 </style>

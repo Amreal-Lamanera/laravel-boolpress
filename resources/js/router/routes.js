@@ -3,6 +3,7 @@ import ContactUs from '../pages/ContactUs.vue';
 import AboutUs from '../pages/AboutUs.vue';
 import PostsIndex from '../pages/Posts.index.vue';
 import PostsShow from '../pages/Posts.show.vue';
+import Page404 from '../pages/404.vue';
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
         name: 'posts.show',
         component: PostsShow,
         props: true
+    },
+    {
+        path: '*',
+        name: '404',
+        component: Page404,
     }
 ];
 
